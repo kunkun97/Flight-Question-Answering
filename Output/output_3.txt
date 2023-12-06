@@ -1,0 +1,39 @@
+Kết quả truy vấn câu hỏi 3
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'máy_bay']	['nào', 'đến', 'thành_phố', 'huế', '?']	
+RIGHTARC	['Root', 'máy_bay', 'nào']	['đến', 'thành_phố', 'huế', '?']	(whmod, máy_bay, nào)
+REDUCE	['Root', 'máy_bay']	['đến', 'thành_phố', 'huế', '?']	
+LEFTARC	['Root']	['đến', 'thành_phố', 'huế', '?']	(subj, đến, máy_bay)
+RIGHTARC	['Root', 'đến']	['thành_phố', 'huế', '?']	(root, Root, đến)
+RIGHTARC	['Root', 'đến', 'thành_phố']	['huế', '?']	(dobj, đến, thành_phố)
+RIGHTARC	['Root', 'đến', 'thành_phố', 'huế']	['?']	(namemod, thành_phố, huế)
+REDUCE	['Root', 'đến', 'thành_phố']	['?']	
+REDUCE	['Root', 'đến']	['?']	
+RIGHTARC	['Root', 'đến', '?']	[]	(punc, đến, ?)
+
+(whmod, máy_bay, nào) (subj, đến, máy_bay) (root, Root, đến) (dobj, đến, thành_phố) (namemod, thành_phố, huế) (punc, đến, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 WHQUERY (WHICH m1 MÁY_BAY))
+(s1 PRED ĐẾN)
+(s1 LSUBJ MÁY_BAY)
+(s1 LOBJ (NAME h1 "HUẾ"))
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(WH QUERY(& (ĐẾN s1) (AGENT s1 (WHICH m1 MÁY_BAY)) (THEME s1 (NAME h1 "HUẾ"))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(PRINT-ALL ?t (FLIGHT ?t) (ATIME ?t HUE ?dt))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Máy bay mã số VN1. 
+Máy bay mã số VJ1. 

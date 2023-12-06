@@ -1,0 +1,51 @@
+Kết quả truy vấn câu hỏi 4
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'máy_bay']	['nào', 'xuất_phát', 'từ', 'thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'máy_bay', 'nào']	['xuất_phát', 'từ', 'thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	(whmod, máy_bay, nào)
+REDUCE	['Root', 'máy_bay']	['xuất_phát', 'từ', 'thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	
+LEFTARC	['Root']	['xuất_phát', 'từ', 'thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	(subj, xuất_phát, máy_bay)
+RIGHTARC	['Root', 'xuất_phát']	['từ', 'thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	(root, Root, xuất_phát)
+RIGHTARC	['Root', 'xuất_phát', 'từ']	['thành_phố', 'hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	(pmod, xuất_phát, từ)
+RIGHTARC	['Root', 'xuất_phát', 'từ', 'thành_phố']	['hồ_chí_minh', ',', 'lúc', 'mấy_giờ', '?']	(pobj, từ, thành_phố)
+RIGHTARC	['Root', 'xuất_phát', 'từ', 'thành_phố', 'hồ_chí_minh']	[',', 'lúc', 'mấy_giờ', '?']	(namemod, thành_phố, hồ_chí_minh)
+REDUCE	['Root', 'xuất_phát', 'từ', 'thành_phố']	[',', 'lúc', 'mấy_giờ', '?']	
+REDUCE	['Root', 'xuất_phát', 'từ']	[',', 'lúc', 'mấy_giờ', '?']	
+REDUCE	['Root', 'xuất_phát']	[',', 'lúc', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'xuất_phát', ',']	['lúc', 'mấy_giờ', '?']	(punc, xuất_phát, ,)
+REDUCE	['Root', 'xuất_phát']	['lúc', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'xuất_phát', 'lúc']	['mấy_giờ', '?']	(aux, xuất_phát, lúc)
+RIGHTARC	['Root', 'xuất_phát', 'lúc', 'mấy_giờ']	['?']	(whmod, lúc, mấy_giờ)
+REDUCE	['Root', 'xuất_phát', 'lúc']	['?']	
+REDUCE	['Root', 'xuất_phát']	['?']	
+RIGHTARC	['Root', 'xuất_phát', '?']	[]	(punc, xuất_phát, ?)
+
+(whmod, máy_bay, nào) (subj, xuất_phát, máy_bay) (root, Root, xuất_phát) (pmod, xuất_phát, từ) (pobj, từ, thành_phố) (namemod, thành_phố, hồ_chí_minh) (punc, xuất_phát, ,) (aux, xuất_phát, lúc) (whmod, lúc, mấy_giờ) (punc, xuất_phát, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 WHQUERY (WHEN s1 TIME))
+(s1 WHQUERY (WHICH m1 MÁY_BAY))
+(s1 PRED XUẤT_PHÁT)
+(s1 LSUBJ MÁY_BAY)
+(s1 PFROM (NAME h1 "HỒ_CHÍ_MINH"))
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(WH QUERY(& (AT_TIME s1 (WHEN s1 TIME)) (XUẤT_PHÁT s1) (EXPERIENCER s1 (WHICH m1 MÁY_BAY)) (FROM_LOC fl s1 (NAME h1 "HỒ_CHÍ_MINH"))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(PRINT-ALL ?t (FLIGHT ?t) ?st (STIME ?st) (DTIME ?t HCM ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Máy bay mã số VJ4. Máy bay cất cánh lúc 8:30HR. 
+Máy bay mã số VN5. Máy bay cất cánh lúc 17:00HR. 
+Máy bay mã số VJ3. Máy bay cất cánh lúc 9:45HR. 
+Máy bay mã số VN3. Máy bay cất cánh lúc 4:30HR. 
+Máy bay mã số VN1. Máy bay cất cánh lúc 10:00HR. 

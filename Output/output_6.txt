@@ -1,0 +1,42 @@
+Kết quả truy vấn câu hỏi 6
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'máy_bay']	['vn4', 'có', 'xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	
+RIGHTARC	['Root', 'máy_bay', 'vn4']	['có', 'xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	(idmod, máy_bay, vn4)
+SHIFT	['Root', 'máy_bay', 'vn4', 'có']	['xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	
+LEFTARC	['Root', 'máy_bay', 'vn4']	['xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	(aux, xuất_phát, có)
+REDUCE	['Root', 'máy_bay']	['xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	
+LEFTARC	['Root']	['xuất_phát', 'từ', 'đà_nẵng', 'không', '?']	(subj, xuất_phát, máy_bay)
+RIGHTARC	['Root', 'xuất_phát']	['từ', 'đà_nẵng', 'không', '?']	(root, Root, xuất_phát)
+RIGHTARC	['Root', 'xuất_phát', 'từ']	['đà_nẵng', 'không', '?']	(pmod, xuất_phát, từ)
+RIGHTARC	['Root', 'xuất_phát', 'từ', 'đà_nẵng']	['không', '?']	(pobj, từ, đà_nẵng)
+REDUCE	['Root', 'xuất_phát', 'từ']	['không', '?']	
+REDUCE	['Root', 'xuất_phát']	['không', '?']	
+RIGHTARC	['Root', 'xuất_phát', 'không']	['?']	(aux, xuất_phát, không)
+REDUCE	['Root', 'xuất_phát']	['?']	
+RIGHTARC	['Root', 'xuất_phát', '?']	[]	(punc, xuất_phát, ?)
+
+(idmod, máy_bay, vn4) (aux, xuất_phát, có) (subj, xuất_phát, máy_bay) (root, Root, xuất_phát) (pmod, xuất_phát, từ) (pobj, từ, đà_nẵng) (aux, xuất_phát, không) (punc, xuất_phát, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 YNQUERY XUẤT_PHÁT)
+(s1 PRED XUẤT_PHÁT)
+(s1 LSUBJ (ID VN4 MÁY_BAY))
+(s1 PFROM (NAME đ1 "ĐÀ_NẴNG"))
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(YS QUERY(& (XUẤT_PHÁT s1) (EXPERIENCER s1 (ID VN4 MÁY_BAY)) (FROM_LOC fl s1 (NAME đ1 "ĐÀ_NẴNG"))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(YES-NO (DTIME VN4 DANANG ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Không. 

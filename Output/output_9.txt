@@ -1,0 +1,49 @@
+Kết quả truy vấn câu hỏi 9
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'có']	['máy_bay', 'nào', 'bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	
+RIGHTARC	['Root', 'có', 'máy_bay']	['nào', 'bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(nmod, có, máy_bay)
+RIGHTARC	['Root', 'có', 'máy_bay', 'nào']	['bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(whmod, máy_bay, nào)
+REDUCE	['Root', 'có', 'máy_bay']	['bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	
+LEFTARC	['Root', 'có']	['bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(subj, bay, máy_bay)
+LEFTARC	['Root']	['bay', 'từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(aux, bay, có)
+RIGHTARC	['Root', 'bay']	['từ', 'hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(root, Root, bay)
+RIGHTARC	['Root', 'bay', 'từ']	['hải_phòng', 'đến', 'khánh_hòa', 'không', '?']	(pmod, bay, từ)
+RIGHTARC	['Root', 'bay', 'từ', 'hải_phòng']	['đến', 'khánh_hòa', 'không', '?']	(pobj, từ, hải_phòng)
+REDUCE	['Root', 'bay', 'từ']	['đến', 'khánh_hòa', 'không', '?']	
+REDUCE	['Root', 'bay']	['đến', 'khánh_hòa', 'không', '?']	
+RIGHTARC	['Root', 'bay', 'đến']	['khánh_hòa', 'không', '?']	(pmod, bay, đến)
+RIGHTARC	['Root', 'bay', 'đến', 'khánh_hòa']	['không', '?']	(pobj, đến, khánh_hòa)
+REDUCE	['Root', 'bay', 'đến']	['không', '?']	
+REDUCE	['Root', 'bay']	['không', '?']	
+RIGHTARC	['Root', 'bay', 'không']	['?']	(aux, bay, không)
+REDUCE	['Root', 'bay']	['?']	
+RIGHTARC	['Root', 'bay', '?']	[]	(punc, bay, ?)
+
+(nmod, có, máy_bay) (whmod, máy_bay, nào) (subj, bay, máy_bay) (aux, bay, có) (root, Root, bay) (pmod, bay, từ) (pobj, từ, hải_phòng) (pmod, bay, đến) (pobj, đến, khánh_hòa) (aux, bay, không) (punc, bay, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 WHQUERY (WHICH m1 MÁY_BAY))
+(s1 YNQUERY BAY)
+(s1 PRED BAY)
+(s1 LSUBJ MÁY_BAY)
+(s1 PTO (NAME k1 "KHÁNH_HÒA"))
+(s1 PFROM (NAME h1 "HẢI_PHÒNG"))
+(CÓ NMOD MÁY_BAY)
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(YS QUERY(& (BAY s1) (EXPERIENCER s1 (WHICH m1 MÁY_BAY)) (TO_LOC tl s1 (NAME k1 "KHÁNH_HÒA")) (FROM_LOC fl s1 (NAME h1 "HẢI_PHÒNG")) (NMOD CÓ (WHICH m1 MÁY_BAY))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(YES-NO (ATIME ?t KHANHHOA ?dt) (DTIME ?t HAIPHONG ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Không. 

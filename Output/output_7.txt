@@ -1,0 +1,52 @@
+Kết quả truy vấn câu hỏi 7
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'thời_gian']	['máy_bay', 'vj5', 'bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'thời_gian', 'máy_bay']	['vj5', 'bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(nmod, thời_gian, máy_bay)
+RIGHTARC	['Root', 'thời_gian', 'máy_bay', 'vj5']	['bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(idmod, máy_bay, vj5)
+REDUCE	['Root', 'thời_gian', 'máy_bay']	['bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+REDUCE	['Root', 'thời_gian']	['bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+LEFTARC	['Root']	['bay', 'từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(subj, bay, thời_gian)
+RIGHTARC	['Root', 'bay']	['từ', 'thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(root, Root, bay)
+RIGHTARC	['Root', 'bay', 'từ']	['thành_phố', 'hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(pmod, bay, từ)
+RIGHTARC	['Root', 'bay', 'từ', 'thành_phố']	['hà_nội', 'đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(pobj, từ, thành_phố)
+RIGHTARC	['Root', 'bay', 'từ', 'thành_phố', 'hà_nội']	['đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	(namemod, thành_phố, hà_nội)
+REDUCE	['Root', 'bay', 'từ', 'thành_phố']	['đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+REDUCE	['Root', 'bay', 'từ']	['đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+REDUCE	['Root', 'bay']	['đến', 'khánh_hòa', 'mất', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'bay', 'đến']	['khánh_hòa', 'mất', 'mấy_giờ', '?']	(pmod, bay, đến)
+RIGHTARC	['Root', 'bay', 'đến', 'khánh_hòa']	['mất', 'mấy_giờ', '?']	(pobj, đến, khánh_hòa)
+REDUCE	['Root', 'bay', 'đến']	['mất', 'mấy_giờ', '?']	
+REDUCE	['Root', 'bay']	['mất', 'mấy_giờ', '?']	
+RIGHTARC	['Root', 'bay', 'mất']	['mấy_giờ', '?']	(aux, bay, mất)
+RIGHTARC	['Root', 'bay', 'mất', 'mấy_giờ']	['?']	(whmod, mất, mấy_giờ)
+REDUCE	['Root', 'bay', 'mất']	['?']	
+REDUCE	['Root', 'bay']	['?']	
+RIGHTARC	['Root', 'bay', '?']	[]	(punc, bay, ?)
+
+(nmod, thời_gian, máy_bay) (idmod, máy_bay, vj5) (subj, bay, thời_gian) (root, Root, bay) (pmod, bay, từ) (pobj, từ, thành_phố) (namemod, thành_phố, hà_nội) (pmod, bay, đến) (pobj, đến, khánh_hòa) (aux, bay, mất) (whmod, mất, mấy_giờ) (punc, bay, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 WHQUERY (WHAT s1 TIME))
+(s1 PRED BAY)
+(s1 LSUBJ THỜI_GIAN)
+(s1 PTO (NAME k1 "KHÁNH_HÒA"))
+(THỜI_GIAN NMOD (ID VJ5 MÁY_BAY))
+(s1 PFROM (NAME h1 "HÀ_NỘI"))
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(WH QUERY(& (RUN_TIME s1 (WHAT s1 TIME)) (BAY s1) (EXPERIENCER s1 THỜI_GIAN) (TO_LOC tl s1 (NAME k1 "KHÁNH_HÒA")) (NMOD THỜI_GIAN (ID VJ5 MÁY_BAY)) (FROM_LOC fl s1 (NAME h1 "HÀ_NỘI"))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(PRINT-ALL ?rt (RUN_TIME ?rt) (RUN-TIME VJ5 HN KHANHHOA ?rt) (ATIME VJ5 KHANHHOA ?dt) (DTIME VJ5 HN ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Thời gian máy bay đi từ nơi xuất phát đến nơi đến mất 0:45HR. 

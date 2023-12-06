@@ -1,0 +1,53 @@
+Kết quả truy vấn câu hỏi 10
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'máy_bay']	['nào', 'bay', 'từ', 'thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	
+RIGHTARC	['Root', 'máy_bay', 'nào']	['bay', 'từ', 'thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(whmod, máy_bay, nào)
+REDUCE	['Root', 'máy_bay']	['bay', 'từ', 'thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	
+LEFTARC	['Root']	['bay', 'từ', 'thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(subj, bay, máy_bay)
+RIGHTARC	['Root', 'bay']	['từ', 'thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(root, Root, bay)
+RIGHTARC	['Root', 'bay', 'từ']	['thành_phố', 'hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(pmod, bay, từ)
+RIGHTARC	['Root', 'bay', 'từ', 'thành_phố']	['hồ_chí_minh', 'đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(pobj, từ, thành_phố)
+RIGHTARC	['Root', 'bay', 'từ', 'thành_phố', 'hồ_chí_minh']	['đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	(namemod, thành_phố, hồ_chí_minh)
+REDUCE	['Root', 'bay', 'từ', 'thành_phố']	['đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	
+REDUCE	['Root', 'bay', 'từ']	['đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	
+REDUCE	['Root', 'bay']	['đến', 'đà_nẵng', 'mất', '1:00', 'hr', '?']	
+RIGHTARC	['Root', 'bay', 'đến']	['đà_nẵng', 'mất', '1:00', 'hr', '?']	(pmod, bay, đến)
+RIGHTARC	['Root', 'bay', 'đến', 'đà_nẵng']	['mất', '1:00', 'hr', '?']	(pobj, đến, đà_nẵng)
+REDUCE	['Root', 'bay', 'đến']	['mất', '1:00', 'hr', '?']	
+REDUCE	['Root', 'bay']	['mất', '1:00', 'hr', '?']	
+RIGHTARC	['Root', 'bay', 'mất']	['1:00', 'hr', '?']	(aux, bay, mất)
+RIGHTARC	['Root', 'bay', 'mất', '1:00']	['hr', '?']	(timemod, mất, 1:00)
+REDUCE	['Root', 'bay', 'mất']	['hr', '?']	
+RIGHTARC	['Root', 'bay', 'mất', 'hr']	['?']	(timemod, mất, hr)
+REDUCE	['Root', 'bay', 'mất']	['?']	
+REDUCE	['Root', 'bay']	['?']	
+RIGHTARC	['Root', 'bay', '?']	[]	(punc, bay, ?)
+
+(whmod, máy_bay, nào) (subj, bay, máy_bay) (root, Root, bay) (pmod, bay, từ) (pobj, từ, thành_phố) (namemod, thành_phố, hồ_chí_minh) (pmod, bay, đến) (pobj, đến, đà_nẵng) (aux, bay, mất) (timemod, mất, 1:00) (timemod, mất, hr) (punc, bay, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 WHQUERY (WHICH m1 MÁY_BAY))
+(s1 PRED BAY)
+(s1 LSUBJ MÁY_BAY)
+(s1 TIME 1:00)
+(s1 TIME HR)
+(s1 PFROM (NAME h1 "HỒ_CHÍ_MINH"))
+(s1 PTO (NAME đ1 "ĐÀ_NẴNG"))
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(WH QUERY(& (BAY s1) (EXPERIENCER s1 (WHICH m1 MÁY_BAY)) (AT_TIME s1 1:00) (AT_TIME s1 HR) (FROM_LOC fl s1 (NAME h1 "HỒ_CHÍ_MINH")) (TO_LOC tl s1 (NAME đ1 "ĐÀ_NẴNG"))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(PRINT-ALL ?t (FLIGHT ?t) (ATIME ?t DANANG ?dt) (DTIME ?t HCM ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Máy bay mã số VJ4. 

@@ -1,0 +1,44 @@
+Kết quả truy vấn câu hỏi 8
+
+b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn: 
+SHIFT	['Root', 'có']	['máy_bay', 'nào', 'xuất_phát', 'từ', 'hải_phòng', 'không', '?']	
+RIGHTARC	['Root', 'có', 'máy_bay']	['nào', 'xuất_phát', 'từ', 'hải_phòng', 'không', '?']	(nmod, có, máy_bay)
+RIGHTARC	['Root', 'có', 'máy_bay', 'nào']	['xuất_phát', 'từ', 'hải_phòng', 'không', '?']	(whmod, máy_bay, nào)
+REDUCE	['Root', 'có', 'máy_bay']	['xuất_phát', 'từ', 'hải_phòng', 'không', '?']	
+LEFTARC	['Root', 'có']	['xuất_phát', 'từ', 'hải_phòng', 'không', '?']	(subj, xuất_phát, máy_bay)
+LEFTARC	['Root']	['xuất_phát', 'từ', 'hải_phòng', 'không', '?']	(aux, xuất_phát, có)
+RIGHTARC	['Root', 'xuất_phát']	['từ', 'hải_phòng', 'không', '?']	(root, Root, xuất_phát)
+RIGHTARC	['Root', 'xuất_phát', 'từ']	['hải_phòng', 'không', '?']	(pmod, xuất_phát, từ)
+RIGHTARC	['Root', 'xuất_phát', 'từ', 'hải_phòng']	['không', '?']	(pobj, từ, hải_phòng)
+REDUCE	['Root', 'xuất_phát', 'từ']	['không', '?']	
+REDUCE	['Root', 'xuất_phát']	['không', '?']	
+RIGHTARC	['Root', 'xuất_phát', 'không']	['?']	(aux, xuất_phát, không)
+REDUCE	['Root', 'xuất_phát']	['?']	
+RIGHTARC	['Root', 'xuất_phát', '?']	[]	(punc, xuất_phát, ?)
+
+(nmod, có, máy_bay) (whmod, máy_bay, nào) (subj, xuất_phát, máy_bay) (aux, xuất_phát, có) (root, Root, xuất_phát) (pmod, xuất_phát, từ) (pobj, từ, hải_phòng) (aux, xuất_phát, không) (punc, xuất_phát, ?)
+
+
+
+c) Quan hệ văn phạm cho các chuyến máy bay: 
+(s1 YNQUERY XUẤT_PHÁT)
+(s1 WHQUERY (WHICH m1 MÁY_BAY))
+(s1 PRED XUẤT_PHÁT)
+(s1 LSUBJ MÁY_BAY)
+(s1 PFROM (NAME h1 "HẢI_PHÒNG"))
+(CÓ NMOD MÁY_BAY)
+
+
+
+d) Dạng luận lý từ các quan hệ văn phạm: 
+(WH QUERY(& (XUẤT_PHÁT s1) (EXPERIENCER s1 (WHICH m1 MÁY_BAY)) (FROM_LOC fl s1 (NAME h1 "HẢI_PHÒNG")) (NMOD CÓ (WHICH m1 MÁY_BAY))))
+
+
+
+e) Ngữ nghĩa thủ tục từ dạng luận lý: 
+(PRINT-ALL ?t (FLIGHT ?t) ?t (FLIGHT ?t) (DTIME ?t HAIPHONG ?st))
+
+
+
+f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn:
+Không tồn tại chuyến bay thỏa yêu cầu câu hỏi. 
