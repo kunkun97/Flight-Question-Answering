@@ -1,12 +1,18 @@
-### Yêu cầu viết chương trình để hiện thực
-a) Xây dựng bộ phân tích cú pháp của văn phạm phụ thuộc.\
-b) Phân tích cú pháp và xuất ra các quan hệ của các thành phần của từng câu truy vấn.\
-c) Từ kết quả ở b) tạo các quan hệ văn phạm cho các chuyến máy bay giữa thành phố Hồ Chí Minh, Huế, Đà Nẵng, Hải Phòng và Hà Nội với cơ sở dữ liệu đã cho ở trên.\
-d) Tạo dạng luận lý từ các quan hệ văn phạm ở c).\
-e) Tạo ngữ nghĩa thủ tục từ dạng luận lý ở d).\
-f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu truy vấn trên.
+# Vietnamese Flight Question Answering System
 
-### Các câu truy vấn:
+A natural language processing system that answers flight-related queries in Vietnamese language. The system processes questions about flights between major Vietnamese cities including Ho Chi Minh City, Hue, Da Nang, Hai Phong, and Hanoi.
+
+## 🎯 System Features
+
+- Dependency grammar parser for Vietnamese language
+- Syntactic analysis of query sentences
+- Grammar relation generation for flight information
+- Logical form conversion
+- Procedural semantic generation
+- Data retrieval for query answering
+
+## 💡 Supported Queries
+
 1) Máy bay nào đến thành phố Huế lúc 13:30HR ?. 
 2) Máy bay nào bay từ Đà Nẵng đến TP. Hồ Chí Minh mất 1:00 HR ?. 
 3) Hãy cho biết mã hiệu các máy bay hạ cánh ở Huế ?. -> Máy bay nào đến thành phố Huế  ?. (*)
@@ -19,26 +25,19 @@ f) Truy xuất dữ liệu để tìm thông tin trả lời cho các câu tr
 10) Có máy bay nào bay từ Hải Phòng đến Khánh Hòa không ?.
 11) Máy bay VJ1 xuất phát từ HCM 10:HR phải không ?.
 12) Máy bay nào bay từ TP. Hồ Chí Minh đến Đà Nẵng mất 1:00 HR ?.
-(*) -> Vì chưa thể thực hiện được yêu cầu cô đưa nên em đã thay thế bằng 1 câu hỏi có văn phạm khác nhưng nội dung thì tương tự.
 
-### Cấu trúc thư mục
-* Input/database: Cơ sở dữ liệu đầu vào của bài toán.
-* Input/question: Chứa các câu hỏi đầu vào của bài toán.
-* Output: Kết quả thực thi của mỗi câu hỏi.
-* Models: Các module con thực thi bài toán.
-* main.py: Entry point cho chương trình với ngôn ngữ Python.
+## 📁 Project Structure
+.
+├── Input/
+│   ├── database/    # Flight database
+│   └── question/    # Input questions
+├── Output/          # Query results
+├── Models/          # Processing modules
+└── main.py         # Application entry point
 
-### Cách chạy ứng dụng:
-# 1. Bước chuẩn bị:
-* Cài đặt thư viện regex (dùng để thao tác với chuỗi trên python) nếu chưa có:
-```
-$ pip install regex
-```
+## 🚀 Prerequisites
 
-# 2. Chạy ứng dụng:
-```
-$ cd VoBaDat_2170307   # Trỏ đến thư mục cần chạy chương trình
+- Python 3.x
+- regex library
 
-$ python main.py  # Chạy chương trình
-```
-* File kết quả xuất ra nằm trong thư mục Output (output_1 → output_10), output_9 là kết quả của câu hỏi 10 và output_10 là kết quả của câu hỏi 12
+* Results will be generated in the Output directory (output_1 → output_10)
